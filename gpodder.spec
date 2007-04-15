@@ -1,11 +1,11 @@
-Summary:	A podcast  receiver/catcher written in PyGTK
+Summary:	A podcast receiver/catcher written in PyGTK
 Summary(pl):	Czytnik podcastów napisany w PyGTK
 Name:		gpodder
 Version:	0.9.1
 Release:	0.1
 License:	GPL v2+
 Group:		Applications/Communications
-Source0:	http://download.berlios.de/%{name}/%{name}-%{version}.tar.gz
+Source0:	http://download.berlios.de/gpodder/%{name}-%{version}.tar.gz
 # Source0-md5:	c600885be7b5212ed2c02f45a842ece2
 URL:		http://gpodder.berlios.de/
 BuildRequires:	ImageMagick
@@ -17,13 +17,13 @@ BuildRequires:	python-pygtk-devel
 BuildRequires:	rpmbuild(macros) >= 1.177
 BuildRequires:	rpm-pythonprov
 %pyrequires_eq	python
-%pyrequires_eq	python-PyXML
-%pyrequires_eq	python-eyeD3
-%pyrequires_eq	python-mad
-%pyrequires_eq	python-modules
-%pyrequires_eq	python-pygtk-glade
 Requires:	lame
 Requires:	mplayer
+Requires:	python-PyXML
+Requires:	python-eyeD3
+Requires:	python-mad
+Requires:	python-modules
+Requires:	python-pygtk-glade
 Requires:	vorbis-tools
 Requires:	wget
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)

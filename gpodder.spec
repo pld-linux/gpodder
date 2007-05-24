@@ -1,14 +1,15 @@
 Summary:	A podcast receiver/catcher written in PyGTK
 Summary(pl):	Czytnik podcastów napisany w PyGTK
 Name:		gpodder
-Version:	0.9.1
-Release:	0.1
+Version:	0.9.2
+Release:	0.9
 License:	GPL v2+
 Group:		Applications/Communications
 Source0:	http://download.berlios.de/gpodder/%{name}-%{version}.tar.gz
-# Source0-md5:	c600885be7b5212ed2c02f45a842ece2
+# Source0-md5:	806b354245daa6e4076180508d0e6942
 URL:		http://gpodder.berlios.de/
 BuildRequires:	ImageMagick
+BuildRequires:	ImageMagick-coder-png
 BuildRequires:	gettext-devel
 BuildRequires:	help2man
 BuildRequires:	intltool

@@ -1,5 +1,5 @@
 Summary:	A podcast receiver/catcher written in PyGTK
-Summary(pl):	Czytnik podcastów napisany w PyGTK
+Summary(pl.UTF-8):	Czytnik podcastów napisany w PyGTK
 Name:		gpodder
 Version:	0.9.2
 Release:	0.9

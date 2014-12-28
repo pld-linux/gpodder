@@ -10,7 +10,7 @@ Source0:	http://download.berlios.de/gpodder/%{name}-%{version}.tar.gz
 URL:		http://gpodder.berlios.de/
 BuildRequires:	ImageMagick
 BuildRequires:	ImageMagick-coder-png
-BuildRequires:	gettext-devel
+BuildRequires:	gettext-tools
 BuildRequires:	help2man
 BuildRequires:	intltool
 BuildRequires:	python-devel

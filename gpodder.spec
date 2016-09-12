@@ -25,8 +25,10 @@ Requires:	mplayer
 Requires:	python
 Requires:	python-PyXML
 Requires:	python-eyeD3
+Requires:	python-feedparser
 Requires:	python-mad
 Requires:	python-modules
+Requires:	python-mygpoclient
 Requires:	python-pygtk-glade
 Requires:	vorbis-tools
 Requires:	wget

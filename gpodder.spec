@@ -2,7 +2,7 @@ Summary:	A podcast receiver/catcher written in PyGTK
 Summary(pl.UTF-8):	Czytnik podcastów napisany w PyGTK
 Name:		gpodder
 Version:	3.9.1
-Release:	0.9
+Release:	0.10
 License:	GPL v2+
 Group:		X11/Applications/Multimedia
 Source0:	http://gpodder.org/src/%{name}-%{version}.tar.gz
@@ -55,6 +55,16 @@ rm -rf $RPM_BUILD_ROOT
 %{__rm} -r $RPM_BUILD_ROOT%{py_sitedir}/gpodder/test
 
 %py_postclean
+
+# unknown icon sizes
+%{__rm} -r $RPM_BUILD_ROOT%{_iconsdir}/hicolor/{26x26,40x40}
+
+# unsupported locales
+%{__rm} -r $RPM_BUILD_ROOT%{_localedir}/cs_CZ
+%{__rm} -r $RPM_BUILD_ROOT%{_localedir}/es_ES
+%{__rm} -r $RPM_BUILD_ROOT%{_localedir}/fa_IR
+%{__rm} -r $RPM_BUILD_ROOT%{_localedir}/ko_KR
+
 
 %find_lang %{name}
 

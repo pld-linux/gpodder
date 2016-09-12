@@ -1,13 +1,13 @@
 Summary:	A podcast receiver/catcher written in PyGTK
 Summary(pl.UTF-8):	Czytnik podcastów napisany w PyGTK
 Name:		gpodder
-Version:	0.9.2
+Version:	3.9.1
 Release:	0.9
 License:	GPL v2+
-Group:		Applications/Communications
-Source0:	http://download.berlios.de/gpodder/%{name}-%{version}.tar.gz
-# Source0-md5:	806b354245daa6e4076180508d0e6942
-URL:		http://gpodder.berlios.de/
+Group:		X11/Applications/Multimedia
+Source0:	http://gpodder.org/src/%{name}-%{version}.tar.gz
+# Source0-md5:	f257c2e887808e53a21787d394623764
+URL:		http://gpodder.org/
 BuildRequires:	ImageMagick
 BuildRequires:	ImageMagick-coder-png
 BuildRequires:	gettext-tools
@@ -15,11 +15,14 @@ BuildRequires:	help2man
 BuildRequires:	intltool
 BuildRequires:	python-devel
 BuildRequires:	python-pygtk-devel
-BuildRequires:	rpmbuild(macros) >= 1.177
 BuildRequires:	rpm-pythonprov
-%pyrequires_eq	python
+BuildRequires:	rpmbuild(macros) >= 1.596
+Requires:	desktop-file-utils
+Requires:	gtk-update-icon-cache
+Requires:	hicolor-icon-theme
 Requires:	lame
 Requires:	mplayer
+Requires:	python
 Requires:	python-PyXML
 Requires:	python-eyeD3
 Requires:	python-mad
@@ -34,25 +37,24 @@ GPodder is a podcast reveiver/catcher written in Python and using
 PyGTK for GUI.
 
 %description -l pl.UTF-8
-GPodder jest czytnikiem podcastów napisanym w języku Python
-i używającym PyGTK do obsługi interfejsu graficznego.
+GPodder jest czytnikiem podcastów napisanym w języku Python i
+używającym PyGTK do obsługi interfejsu graficznego.
 
 %prep
 %setup -q
 
 %build
-%{__make} clean
-%{__make} generators \
-	CC="%{__cc}" \
-	PREFIX=%{_prefix}
-python setup.py build
+%{__make} messages
 
 %install
 rm -rf $RPM_BUILD_ROOT
-
 %{__make} install \
-	PREFIX=%{_prefix} \
 	DESTDIR=$RPM_BUILD_ROOT
+
+%{__rm} $RPM_BUILD_ROOT%{py_sitedir}/gpodder/unittests.py*
+%{__rm} -r $RPM_BUILD_ROOT%{py_sitedir}/gpodder/test
+
+%py_postclean
 
 %find_lang %{name}
 
@@ -60,18 +62,26 @@ rm -rf $RPM_BUILD_ROOT
 rm -rf $RPM_BUILD_ROOT
 
 %post
-%update_desktop_database_post
+%update_desktop_database
+%update_icon_cache hicolor
 
 %postun
-%update_desktop_database_postun
+%update_desktop_database
+%update_icon_cache hicolor
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc AUTHORS README ChangeLog TODO
-%attr(755,root,root) %{_bindir}/*
-%{py_sitescriptdir}/%{name}
+%doc README
+%attr(755,root,root) %{_bindir}/gpo
+%attr(755,root,root) %{_bindir}/gpodder
+%attr(755,root,root) %{_bindir}/gpodder-migrate2tres
+%{_mandir}/man1/gpo.1*
+%{_mandir}/man1/gpodder-migrate2tres.1*
+%{_mandir}/man1/gpodder.1*
+%{py_sitedir}/%{name}
+%{py_sitedir}/%{name}-%{version}-py*.egg-info
 %{_datadir}/%{name}
-%{_desktopdir}/*.desktop
+%{_desktopdir}/gpodder-url-handler.desktop
+%{_desktopdir}/gpodder.desktop
 %{_iconsdir}/*/*/*/%{name}.*
-%{_mandir}/man1/*
-%{_pixmapsdir}/*.png
+%{_datadir}/dbus-1/services/org.gpodder.service
